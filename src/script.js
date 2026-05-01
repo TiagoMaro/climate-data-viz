@@ -183,7 +183,7 @@ function gerarGraficoTop10(labels, data) {
         data: {
             labels: labels,
             datasets: [{
-                label: 'Anomalia Média (°C)',
+                label: 'Ranking Maiores Anomalias',
                 data: data,
                 backgroundColor: '#f87171',
                 borderRadius: 4
