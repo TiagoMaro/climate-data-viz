@@ -22,11 +22,17 @@ async function carregarDados() {
             complete: function (results) {
                 dadosGlobais = results.data;
 
+                //Inicializar grafico geral
                 processarGraficoGeral(dadosGlobais);
+
+                //Inicializar grafico decadas
                 const dadosDecadas = calcularMediasPorDecada(dadosGlobais);
                 gerarGraficoDecadas(dadosDecadas.labelsDecadas, dadosDecadas.valoresDecadas);
+
+                //Iniciar grafico ranking
                 calcularTop10(dadosGlobais);
 
+                //Iniciar dashboard interativa
                 preencherSeletorAnos(dadosGlobais);
             }
         });
@@ -35,7 +41,7 @@ async function carregarDados() {
     }
 }
 
-//Lógica Dashboard Interativo
+//Lógica Dashboard Interativa
 function preencherSeletorAnos(dados) {
     const seletor = document.getElementById('selecionarAno');
 
