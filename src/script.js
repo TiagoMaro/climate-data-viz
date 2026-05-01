@@ -9,7 +9,7 @@ const nomesAbas = ['geral', 'decadas', 'top10', 'interativo'];
 //Carregamento de dados
 async function carregarDados() {
     try {
-        const resposta = await fetch('data/GLB.Ts+dSST.csv');
+        const resposta = await fetch('./src/data/GLB.Ts+dSST.csv');
         const textoCsv = await resposta.text();
 
         Papa.parse(textoCsv, {
@@ -284,6 +284,6 @@ function configurarNavegacao() {
     }
 }
 
-// Inicialização Geral
+//Inicialização Geral
 configurarNavegacao();
 carregarDados();
