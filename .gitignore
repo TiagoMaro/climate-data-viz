@@ -1,0 +1,15 @@
+#Dependências do Node
+node_modules/
+
+#Logs de erro do npm
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+#Arquivos do Sistema Operacional
+.DS_Store
+thumbs.db
+
+#Pastas de ambiente/configuração de editores
+.vscode/
+.idea/

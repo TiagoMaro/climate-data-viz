@@ -4,34 +4,64 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="style.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <title>Climate Data</title>
 </head>
 
 <body class="relative bg-sky-950">
-    <header class="relative top-8 bg-sky-600 h-20">
-        <div class="justify-items-center">
-            <div>
-                <h3 class="h-8">Exibir gráficos por</h3>
-            </div>
-            <div class="">
-                <select class="w-96">
-                    <option value="Teste"> </option>
-                    <option value="Teste1"> Teste1 </option>
-                    <option value="Teste2"> Teste2 </option>
+    <header class="relative top-4">
+        <!-- HEADER PARA NAVEGAÇÃO -->
+        <nav id="menu-navegacao"
+            class="flex justify-center space-x-4 bg-blue-900 p-4 shadow-lg rounded-t-lg rounded-b-lg max-w-4xl mx-auto">
+            <button data-aba="geral" class="text-white hover:text-sky-300 font-bold">Tendência Geral</button>
+            <button data-aba="decadas" class="text-white hover:text-sky-300">Médias por Década</button>
+            <button data-aba="top10" class="text-white hover:text-sky-300">TOP 10</button>
+            <button data-aba="interativo" class="text-white hover:text-sky-300">Análise por Ano</button>
+            <button id="btnAutoPlay"
+                class="ml-4 p-2 bg-blue-800 hover:bg-blue-700 text-white rounded-full transition-all duration-300 shadow-inner flex items-center justify-center w-8 h-8 opacity-80 hover:opacity-100">
+                <span id="statusIcon" class="text-xs">▶</span>
+            </button>
+        </nav>
+    </header>
+
+    <main class="relative top-16 max-w-4xl mx-auto p-6 bg-white shadow-xl rounded-b-lg rounded-t-lg mb-20">
+        <!-- ABA GERAL -->
+        <div id="sessao-geral" class="aba-conteudo">
+            <h2 class="text-xl font-bold text-slate-800 mb-4 text-center">Tendência de Temperatura Global (1880-2024)
+            </h2>
+            <canvas id="graficoGeral"></canvas>
+        </div>
+
+        <!-- ABA DÉCADAS -->
+        <div id="sessao-decadas" class="aba-conteudo hidden">
+            <h2 class="text-xl font-bold text-slate-800 mb-4 text-center">Aumento Médio por Década</h2>
+            <canvas id="graficoDecadas"></canvas>
+        </div>
+
+        <!-- ABA INTERATIVA -->
+        <div id="sessao-interativo" class="aba-conteudo hidden">
+            <h2 class="text-xl font-bold text-slate-800 mb-2 text-center">Detalhe Mensal por Ano</h2>
+            <div class="flex justify-center mb-6">
+                <select id="selecionarAno"
+                    class="bg-slate-100 border border-slate-300 p-2 rounded shadow-sm focus:ring-2 focus:ring-blue-500 outline-none">
                 </select>
             </div>
-            <div>
-                <h3></h3>
-            </div>
+            <canvas id="graficoAnoIndividual"></canvas>
         </div>
-    </header>
-    <main>
 
+        <!-- ABA TOP 10 -->
+        <div id="sessao-top10" class="aba-conteudo hidden">
+            <h2 class="text-xl font-bold text-slate-800 mb-4 text-center">Aumento Médio por Década</h2>
+            <canvas id="graficoTop10"></canvas>
+        </div>
     </main>
     <footer>
 
     </footer>
 </body>
+
+<script type="module" src="script.js"></script>
 
 </html>
