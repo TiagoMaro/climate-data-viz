@@ -193,7 +193,10 @@ function gerarGraficoTop10(labels, data) {
             indexAxis: 'y',
             responsive: true,
             plugins: {
-                legend: { display: false }
+                legend: {
+                    display: true,
+                    position: 'top'
+                }
             }
         }
     });
@@ -242,7 +245,7 @@ function alternarSlideshow() {
     if (intervaloSlideshow) {
         clearInterval(intervaloSlideshow);
         intervaloSlideshow = null;
-        
+
         btnAuto.classList.remove('bg-emerald-500');
         btnAuto.classList.add('ml-4', 'p-2', 'bg-blue-800', 'hover:bg-blue-700', 'text-white', 'rounded-full', 'transition-all', 'duration-300', 'shadow-inner', 'flex', 'items-center', 'justify-center', 'w-8', 'h-8', 'opacity-80', 'hover:opacity-100');
         icon.innerText = "▶";
@@ -251,12 +254,12 @@ function alternarSlideshow() {
         btnAuto.classList.remove('bg-transparent', 'border', 'border-blue-400');
         btnAuto.classList.add('bg-blue-500');
         icon.innerText = "Auto";
-        
+
         intervaloSlideshow = setInterval(() => {
             indiceAbaAtual = (indiceAbaAtual + 1) % nomesAbas.length;
             const proximaAba = nomesAbas[indiceAbaAtual];
             mudarAba(proximaAba);
-            atualizarDestaqueBotao(proximaAba); 
+            atualizarDestaqueBotao(proximaAba);
         }, velSlide);
     }
 }
@@ -269,7 +272,7 @@ function configurarNavegacao() {
     botoes.forEach(btn => {
         btn.addEventListener('click', () => {
             const abaAlvo = btn.getAttribute('data-aba');
-            
+
             //Para o slideshow se clicar manualmente em algum gráfico
             if (intervaloSlideshow) alternarSlideshow();
 
