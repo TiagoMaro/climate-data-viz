@@ -30,7 +30,7 @@
     <main class="relative top-16 max-w-4xl mx-auto p-6 bg-white shadow-xl rounded-b-lg rounded-t-lg mb-20">
         <!-- ABA GERAL -->
         <div id="sessao-geral" class="aba-conteudo">
-            <h2 class="text-xl font-bold text-slate-800 mb-4 text-center">Tendência de Temperatura Global (1880-2024)
+            <h2 class="text-xl font-bold text-slate-800 mb-4 text-center">Tendência de Temperatura Global (1880-2019)
             </h2>
             <canvas id="graficoGeral"></canvas>
         </div>
@@ -46,16 +46,22 @@
             <h2 class="text-xl font-bold text-slate-800 mb-4 text-center">Ranking Maiores Anomalias</h2>
             <canvas id="graficoTop10"></canvas>
         </div>
-        
+
         <!-- ABA INTERATIVA -->
         <div id="sessao-interativo" class="aba-conteudo hidden">
-            <h2 class="text-xl font-bold text-slate-800 mb-2 text-center">Detalhe Mensal por Ano</h2>
-            <div class="flex justify-center mb-6">
-                <select id="selecionarAno"
-                    class="bg-slate-100 border border-slate-300 p-2 rounded shadow-sm focus:ring-2 focus:ring-blue-500 outline-none">
-                </select>
+            <!-- Selecionar ano -->
+            <select id="selecionarAno" class="p-2 border rounded bg-white text-gray-800"></select>
+
+            <!-- Onde os gráficos são renderizados -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="h-64"><canvas id="chartMensal"></canvas></div>
+                <div class="h-64"><canvas id="chartRanking"></canvas></div>
+                <div class="h-64"><canvas id="chartSazonal"></canvas></div>
+                <div class="h-64 flex space-x-4 flex-col items-center justify-center bg-gray-50 rounded shadow-inner">
+                    <p class="text-gray-500 font-bold uppercase text-xs">Média Anual</p>
+                    <h2 id="labelMediaAnual" class="text-5xl font-black text-red-600">--</h2>
+                </div>
             </div>
-            <canvas id="graficoAnoIndividual"></canvas>
         </div>
     </main>
     <footer>
